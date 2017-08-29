@@ -10,7 +10,7 @@
 
 @interface ViewController : UIViewController
 
-@property (strong, nonatomic) NSString *imageName;
+@property (nonatomic) NSUInteger *imageIndex;
 
 @end
 
