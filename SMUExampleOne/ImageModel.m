@@ -62,9 +62,14 @@
     return image;
 }
 
+-(NSString*)getImageName:(NSInteger)index
+{
+    return _imageNames[index];
+}
+
 -(NSUInteger)getArrayLength
 {
-    return [_imageNames count];
+    return 7;
 }
 
 @end

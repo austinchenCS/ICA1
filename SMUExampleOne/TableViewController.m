@@ -48,7 +48,7 @@
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
     // Return the number of rows in the section.
     if(section==0)
-        return self.myImageModel.imageNames.count;
+        return self.myImageModel.getArrayLength;
     else
         return 1;
 }
@@ -63,7 +63,7 @@
         cell = [tableView dequeueReusableCellWithIdentifier:@"ImageNameCell" forIndexPath:indexPath];
         
         // Configure the cell...
-        cell.textLabel.text = self.myImageModel.imageNames[indexPath.row];
+        cell.textLabel.text = [self.myImageModel getImageName:indexPath.row];
         cell.detailTextLabel.text = @"More";
     }
     else{
@@ -84,7 +84,7 @@
         UITableViewCell* cell = (UITableViewCell*)sender;
         ViewController *vc = [segue destinationViewController];
         
-        vc.imageName = cell.textLabel.text;
+        //getImageWithIndexvc.imageName = cell.textLabel.text;
     }
     
 }

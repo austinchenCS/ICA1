@@ -13,6 +13,10 @@
 
 +(ImageModel*) sharedInstance;
 
--(UIImage*)getImageWithName:(NSString*)name;
+-(UIImage*)getImageWithIndex:(NSUInteger)index;
+
+-(NSString*)getImageName:(NSInteger)index;
+
+-(NSUInteger)getArrayLength;
 
 @end
