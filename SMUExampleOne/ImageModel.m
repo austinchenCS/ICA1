@@ -8,6 +8,14 @@
 
 #import "ImageModel.h"
 
+@interface ImageModel()
+
+@property (strong,nonatomic) NSArray* imageNames;
+
+@property (strong, nonatomic) NSMutableArray* images;
+
+@end
+
 @implementation ImageModel
 
 -(NSArray*)imageNames
@@ -32,11 +40,25 @@
     return _sharedInstance;
 }
 
+-(NSMutableArray*)images{
+    
+    if(!_images) {
+        UIImage* image = nil;
+        
+        for(int i=0; i<_imageNames.count; i++) {
+            image = [UIImage imageNamed:_imageNames[i]];
+            [_images addObject:image];
+        }
+    }
+    
+    return _images;
+}
+
+
 -(UIImage*)getImageWithIndex:(NSUInteger)index
 {
     UIImage* image = nil;
-    NSString* name = [_imageNames objectAtIndex:index];
-    image = [UIImage imageNamed:name];
+    image = _images[index];
     return image;
 }
 
