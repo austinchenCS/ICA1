@@ -1,0 +1,15 @@
+#ICA1
+#Team DongleBois
+#Kevin Queenan, Austin Chen, Kellen Schmidt, Logan Dorsey
+
+1.
+
+Not necessarily. For this small example, pre-loading 6-7 images could be considered "faster", but only because this is auch a small sample size of images. It would most certainly not be faster if we were tasked with preloading a billion images. Would we even have the hardware resources? Thus, we say as far as best practices go, this would not be considered "more efficient".
+
+2.
+
+This implementation would not be more scalable because all of the images must be stored locally as soon as the program loads. Previously, we were only loading the currently viewed images into memory. With a large number of images, the performance impact would be very significant. NOT SCALABLE -- however, an improved API with private properties, etc.
+
+3.
+
+We would implement this proposed change by ONLY LOADING the required images at the very beginning and after the view renders, then asynchronously load the remaining images as needed. Of course, one must consider the bandwidth costs, but overall, this approach is scalable on mobile devices. Another improvement is that because of calls to a server, the images are inherently mutable and dynamic. No need to worry about the "array". A small downside would be the non-loaded images do take longer to load due to the time required for download, but this can be mitigated with caching (NSCache).
