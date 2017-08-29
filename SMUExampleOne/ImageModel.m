@@ -8,8 +8,17 @@
 
 #import "ImageModel.h"
 
+@interface ImageModel()
+
+@property (strong,nonatomic) NSArray* imageNames;
+
+@property (strong, nonatomic) NSMutableArray* images;
+
+@end
+
 @implementation ImageModel
-@synthesize imageNames = _imageNames;
+
+
 
 -(NSArray*)imageNames{
     
@@ -17,6 +26,20 @@
         _imageNames = @[@"Eric1",@"Eric2",@"Eric3"];
     
     return _imageNames;
+}
+
+-(NSMutableArray*)images{
+    
+    if(!_images) {
+        UIImage* image = nil;
+        
+        for(int i=0; i<_imageNames.count; i++) {
+            image = [UIImage imageNamed:_imageNames[i]];
+            [_images addObject:image];
+        }
+    }
+    
+    return _images;
 }
 
 +(ImageModel*)sharedInstance{
