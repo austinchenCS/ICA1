@@ -9,9 +9,9 @@
 #import "ImageModel.h"
 
 @implementation ImageModel
-@synthesize imageNames = _imageNames;
 
--(NSArray*)imageNames{
+-(NSArray*)imageNames
+{
     
     if(!_imageNames)
         _imageNames = @[@"Eric1",@"Eric2",@"Eric3"];
@@ -19,7 +19,8 @@
     return _imageNames;
 }
 
-+(ImageModel*)sharedInstance{
++(ImageModel*)sharedInstance
+{
     static ImageModel * _sharedInstance = nil;
     
     static dispatch_once_t oncePredicate;
@@ -31,10 +32,17 @@
     return _sharedInstance;
 }
 
--(UIImage*)getImageWithName:(NSString *)name{
+-(UIImage*)getImageWithIndex:(NSUInteger)index
+{
     UIImage* image = nil;
+    NSString* name = [_imageNames objectAtIndex:index];
     image = [UIImage imageNamed:name];
     return image;
+}
+
+-(NSUInteger)getArrayLength
+{
+    return [_imageNames count];
 }
 
 @end
