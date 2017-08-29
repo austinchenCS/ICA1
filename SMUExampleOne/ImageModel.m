@@ -18,14 +18,26 @@
 
 @implementation ImageModel
 
-
-
--(NSArray*)imageNames{
+-(NSArray*)imageNames
+{
     
     if(!_imageNames)
-        _imageNames = @[@"Eric1",@"Eric2",@"Eric3"];
+        _imageNames = @[@"Eric1",@"Eric2",@"Eric3",@"Kevin1",@"Kellen1",@"Austin1",@"Logan1"];
     
     return _imageNames;
+}
+
++(ImageModel*)sharedInstance
+{
+    static ImageModel * _sharedInstance = nil;
+    
+    static dispatch_once_t oncePredicate;
+    
+    dispatch_once(&oncePredicate,^{
+        _sharedInstance = [[ImageModel alloc] init];
+    });
+    
+    return _sharedInstance;
 }
 
 -(NSMutableArray*)images{
@@ -42,22 +54,17 @@
     return _images;
 }
 
-+(ImageModel*)sharedInstance{
-    static ImageModel * _sharedInstance = nil;
-    
-    static dispatch_once_t oncePredicate;
-    
-    dispatch_once(&oncePredicate,^{
-        _sharedInstance = [[ImageModel alloc] init];
-    });
-    
-    return _sharedInstance;
+
+-(UIImage*)getImageWithIndex:(NSUInteger)index
+{
+    UIImage* image = nil;
+    image = _images[index];
+    return image;
 }
 
--(UIImage*)getImageWithName:(NSString *)name{
-    UIImage* image = nil;
-    image = [UIImage imageNamed:name];
-    return image;
+-(NSUInteger)getArrayLength
+{
+    return [_imageNames count];
 }
 
 @end

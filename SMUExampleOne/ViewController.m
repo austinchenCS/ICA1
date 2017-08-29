@@ -28,18 +28,18 @@
     return _myImageModel;
 }
 
--(NSString*)imageName{
+-(NSUInteger*)imageIndex{
     
-    if(!_imageName)
-        _imageName = @"Eric1";
+    if(!_imageIndex)
+        _imageIndex = 0;
     
-    return _imageName;
+    return _imageIndex;
 }
 
 -(UIImageView*)imageView{
     
     if(!_imageView)
-        _imageView = [[UIImageView alloc] initWithImage:[[ImageModel sharedInstance] getImageWithName:self.imageName]];
+        _imageView = [[UIImageView alloc] initWithImage:[[ImageModel sharedInstance] getImageWithIndex: 0]];
     return _imageView;
 }
 
