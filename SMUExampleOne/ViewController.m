@@ -28,7 +28,7 @@
     return _myImageModel;
 }
 
--(NSUInteger*)imageIndex{
+-(NSUInteger)imageIndex{
     
     if(!_imageIndex)
         _imageIndex = 0;
@@ -39,7 +39,7 @@
 -(UIImageView*)imageView{
     
     if(!_imageView)
-        _imageView = [[UIImageView alloc] initWithImage:[[ImageModel sharedInstance] getImageWithIndex: 0]];
+        _imageView = [[UIImageView alloc] initWithImage:[[ImageModel sharedInstance] getImageWithIndex: self.imageIndex]];
     return _imageView;
 }
 

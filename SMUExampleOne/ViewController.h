@@ -10,7 +10,7 @@
 
 @interface ViewController : UIViewController
 
-@property (nonatomic) NSUInteger *imageIndex;
+@property (nonatomic) NSUInteger imageIndex;
 
 @end
 
